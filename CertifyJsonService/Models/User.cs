@@ -3,6 +3,19 @@ namespace CertifyJsonService.Models
 {
     public class User
     {
+        public static User NewUser = new User
+        {
+            Id = 0,
+            Username = $"zz{Random.Shared.Next()}",
+            Password = "zz",
+            Firstname = "zz",
+            Lastname = "zz",
+            Phone = "911",
+            Email = "help@me.com",
+            IsReviewer = true,
+            IsAdmin = false
+        };
+
         public int Id { get; set; } = 0;
         public string Username { get; set; } = "";
         public string Password { get; set; } = "";
@@ -14,7 +27,8 @@ namespace CertifyJsonService.Models
         public bool IsAdmin { get; set; } = false;
 
         public override string ToString() {
-            return $"{Id}|{Username}|{Firstname} {Lastname}|{Phone}|{Email}|{IsReviewer}|{IsAdmin}";
+            return $"{Id,3} | {Username,-15} | {Firstname + ' ' + Lastname,-20}" +
+                    $" | {Phone,-12} | {Email,-15} | {(IsReviewer?'T':'F')} | {(IsAdmin?'T':'F')}";
         }
     }
 }
